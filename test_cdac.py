@@ -79,15 +79,15 @@ else:
     ]) 
 
 num_layer=MODEL_IN.shape[0]
-if run_mode=='mul':
-    part_final, final_config, layer_cycle=cdac_top(MODEL_IN,DATA_TYPE,num_acc)
+if run_mode == 'mul':
+    part_final, final_config, layer_cycle = cdac_top(MODEL_IN, DATA_TYPE, num_acc)
     # assign_map=np.zeros((num_layer,num_acc)).astype(int)
     # for acc in range(num_acc):
     #     assign_map[part_final[acc],acc]=1
     # print(assign_map)
         
         
-elif run_mode=='sin':
-    config,throughput,cycle=cdse1_top(MODEL_IN,DATA_TYPE,part)
+elif run_mode == 'sin':
+    config, throughput, cycle = cdse1_top(MODEL_IN, DATA_TYPE, part)
     print(config)
     print(throughput)

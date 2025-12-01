@@ -12,21 +12,21 @@ from .gen_make import *
 def gen_charm_top(prj_dir,final_config,device):
     
     
-    Versal_HW=np.array(final_config[:,0:15]).astype(int)
-    placement=np.array(final_config[:,15:19]).astype(int)
-    BUFF_SEL=np.array(final_config[:,19:22])
-    data_type=Versal_HW[0,13]
-    num_layer=Versal_HW.shape[0]
+    Versal_HW = np.array(final_config[:, 0:15]).astype(int)
+    placement = np.array(final_config[:, 15:19]).astype(int)
+    BUFF_SEL = np.array(final_config[:, 19:22])
+    data_type = Versal_HW[0, 13]
+    num_layer = Versal_HW.shape[0]
     
-    AIE_Conf=np.zeros([num_layer,12]).astype(int)
-    AIE_Conf[:,0:10]= Versal_HW[:,0:10].astype(int)
-    AIE_Conf[:,10:12]= Versal_HW[:,13:15].astype(int)
+    AIE_Conf = np.zeros([num_layer, 12]).astype(int)
+    AIE_Conf[:, 0:10] = Versal_HW[:, 0:10].astype(int)
+    AIE_Conf[:,10:12] = Versal_HW[:, 13:15].astype(int)
 
-    PL_Conf=np.zeros([num_layer,15]).astype(int)
-    PL_Conf[:,:]= Versal_HW[:,0:15].astype(int)
+    PL_Conf = np.zeros([num_layer, 15]).astype(int)
+    PL_Conf[:, :] = Versal_HW[:, 0:15].astype(int)
 
-    Host_Conf=np.zeros([num_layer,13]).astype(int)
-    Host_Conf[:,:]= Versal_HW[:,0:13].astype(int)
+    Host_Conf = np.zeros([num_layer, 13]).astype(int)
+    Host_Conf[:, :] = Versal_HW[:, 0:13].astype(int)
 
     ### Create Paths
     #########################
