@@ -54,8 +54,8 @@ def broadC_factor(a,b,c):
             C_BRO=a
     return C_BRO,height
 
-def placement_verify(a,b,c,height):
-    col_full=(a*c)//height
-    col_left=(a*c)%height
-    length=col_full*b + (col_left!=0)*b
+def placement_verify(a, b, c, height):
+    col_full = (a * c) // height
+    col_left = (a * c) % height
+    length = col_full * b + (col_left !=0) * b
     return length

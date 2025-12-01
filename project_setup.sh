@@ -13,6 +13,7 @@ else
     exit
 fi
 
+# parsing the config file line by line
 for ((n=1;n<=22;n++));
 do
 	read -r line
@@ -54,6 +55,7 @@ do
  	fi
 done < "$input"
 
+# security check
 if (( ${SysGen} == 1 )) && ( (( ${KernelGen} != 1 )) || (( ${AIEArrGen} != 1 )) )
 then
     echo ""
@@ -74,6 +76,7 @@ then
     exit
 fi
 
+# select the src directory based on the data type
 if [ ${data_type} == "fp32" ]
 then
 	src_dir="aie_fp32";
@@ -105,7 +108,7 @@ fi
 
 if (( ${AIEArrGen} == 1 ))
 then
-	mv $2/aie/mm_top.cpp $2/aie/single_graph.cpp
+	mv $2/aie/mm_top.cpp $2/aie/single_graph.cpp	# rename the generated kernel
 	./src_gen/AIE_ArrGen/gen_graph.sh $1 $2;
     ./src_gen/AIE_ArrGen/gen_topcpp.sh $1 $2;
     ./src_gen/AIE_ArrGen/gen_toph.sh $1 $2;
