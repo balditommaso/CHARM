@@ -10,30 +10,32 @@
 #See the License for the specific language governing permissions and
 #limitations under the License.
 #
+# TODO: make it runnable on different pc
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 mkfile_dir := $(dir $(mkfile_path))
 TARGET   = hw
 MODE	 = linux
 HOST_ARCH = aarch64
 PRE_BUILT = 0
-PLATFORM_REPO_PATHS=/opt/xilinx/platforms
-PLATFORM = ${PLATFORM_REPO_PATHS}/xilinx_vck190_base_202110_1/xilinx_vck190_base_202110_1.xpfm
+PLATFORM_REPO_PATHS = ${HOME}/tools/Xilinx/2025.1/Vitis/base_platforms
+PLATFORM = ${PLATFORM_REPO_PATHS}/xilinx_vck190_base_202510_1/xilinx_vck190_base_202510_1.xpfm
 XCLBIN   = vck190_aie_base_graph_${TARGET}.xclbin
 XSA	 = vck190_aie_base_graph_${TARGET}.xsa
 XPFM	 = vck190_xpfm
 HOST_EXE = hostexe
 HOST_SRCS := ./host/host.cpp
-SYSROOT_PATH = ./
+SYSROOT_PATH = ${HOME}/tools/petalinux/2025.1
 SYSROOT = ${SYSROOT_PATH}/sysroots/cortexa72-cortexa53-xilinx-linux
 SDKTARGETSYSROOT = ${SYSROOT}
-EDGE_COMMON_SW_PATH = ./
-EDGE_COMMON_SW= ${EDGE_COMMON_SW_PATH}/xilinx-versal-common-v2021.1
+EDGE_COMMON_SW_PATH = /media/tommaso/_data/images
+EDGE_COMMON_SW= ${EDGE_COMMON_SW_PATH}/versal-common-v2025.1
+
 ROOTFS=${EDGE_COMMON_SW}/rootfs.ext4
 IMAGE=${EDGE_COMMON_SW}/Image
 
 FINAL_XCLBIN=mm_${TARGET}.xclbin
-TEMP_DIR := ./_x.$(TARGET).xilinx_vck190_base_202110_1
-BUILD_DIR := ./build_dir.$(TARGET).xilinx_vck190_base_202110_1
+TEMP_DIR := ./_x.$(TARGET).xilinx_vck190_base_202510_1
+BUILD_DIR := ./build_dir.$(TARGET).xilinx_vck190_base_202510_1
 
 KERNEL_XO := $(TEMP_DIR)/dma.xo
 GRAPH    = aie/mm_top.cpp

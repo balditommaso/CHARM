@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+
+
 if [ "$#" -eq 2 ] 
 then
   	input=$1;
